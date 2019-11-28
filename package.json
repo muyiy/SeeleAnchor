@@ -1,0 +1,28 @@
+{
+  "name": "seeleanchor",
+  "version": "1.0.0",
+  "description": "controller",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "local": "cp -r back node_modules/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/muyiy/SeeleAnchor.git"
+  },
+  "keywords": [
+    "seele"
+  ],
+  "author": "tinoma",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/muyiy/SeeleAnchor/issues"
+  },
+  "homepage": "https://github.com/muyiy/SeeleAnchor#readme",
+  "dependencies": {
+    "electron": "^7.1.2",
+    "sqlite3": "^4.1.0"
+  }
+}
