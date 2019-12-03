@@ -1,0 +1,18 @@
+.dark {
+  --l0text: #ffffffff;
+  --l1text: #acadae;
+  --l2text: #ffffff96;
+  --l3text: #ffffff56;
+  --l0background: #000000;
+  --l1background: #1c1d20;
+  --l2background: #181717;
+  --l3background: #000000;
+  
+  --hlgreen: #6ef778; 
+  --hlblue: #0dd5f0;
+  --hlred: #ba0022;
+  
+  --l1tf: invert(73%) sepia(4%) saturate(79%) hue-rotate(169deg) brightness(96%) contrast(88%);
+  --hlgf: invert(71%) sepia(87%) saturate(318%) hue-rotate(67deg) brightness(104%) contrast(94%);
+}
+

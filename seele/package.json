@@ -1,0 +1,19 @@
+{
+  "name": "seele",
+  "version": "1.0.0",
+  "description": "",
+  "main": "seele.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "keccak": "^2.0.0",
+    "rlp": "^2.2.4",
+    "scrypt-js": "^2.0.4",
+    "secp256k1": "^3.7.1",
+    "web3": "^1.2.4",
+    "xmlhttprequest": "^1.8.0"
+  }
+}

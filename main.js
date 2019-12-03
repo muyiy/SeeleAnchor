@@ -1,19 +1,21 @@
 const { app, BrowserWindow } = require('electron')
-const createMenu  = require('./src/menu.js').createMenu;
-const paths       = require('back')
-// console.log(paths);
+// const createMenu  = require('./src/menu.js').createMenu;
+
+
+
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let win
 
 function createWindow () {
-  paths.initiate()
+  // paths.initiate()
   
   // Create the browser window.
   win = new BrowserWindow({
     width: 1000,
     height: 600,
-    // minWidth: 1000,
+    minWidth: 800,
+    minHeight: 400,
     transparent: true,
     frame:true,
     titleBarStyle: 'hidden',
@@ -42,7 +44,7 @@ function createWindow () {
 // Some APIs can only be used after this event occurs.
 app.on('ready', () => {
   createWindow();
-  createMenu(win);
+  // createMenu(win);
 })
 
 // Quit when all windows are closed.
@@ -59,7 +61,7 @@ app.on('activate', () => {
   // dock icon is clicked and there are no other windows open.
   if (win === null) {
     createWindow()
-    createMenu(win);
+    // createMenu(win);
   }
 })
 

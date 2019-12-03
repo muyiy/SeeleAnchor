@@ -1,0 +1,11 @@
+{
+  "name": "slang",
+  "version": "1.0.0",
+  "description": "language",
+  "main": "slang.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "tinoma",
+  "license": "ISC"
+}

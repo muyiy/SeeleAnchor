@@ -1,0 +1,75 @@
+.net {
+  --borderwidth: 3px;
+  --paddingwidth: 20px;
+  --marginside: 20px; 
+  padding: var(--paddingwidth);
+  margin: 20px var(--marginside);
+  border-radius: 10px;
+  overflow: auto;
+  border: solid var(--borderwidth) transparent;
+  width: calc(100% - 2*var(--paddingwidth) - 2*var(--marginside) - 2*var(--borderwidth));
+  /* text-align: center; */
+}
+
+.net:hover{
+  cursor: pointer; 
+  border: solid var(--borderwidth) var(--l1background);
+  transition: 0.1s;
+}
+
+.using {
+  background-color: var(--l1background);
+}
+
+.more {
+  clear: left;
+  float: left;
+}
+
+.address {
+  float: left;
+  margin: auto;
+}
+
+.height {
+  float: right;
+  clear: right;
+}
+
+.version,
+.peers {
+  float: right;
+  opacity: 0.2;
+}
+
+.more{    width: 5%; }
+.address{ width: 30%;}
+.peers{   width: 25%;}
+.version{ width: 10%;}
+.height{  width: 30%;}
+  
+.peers:hover,
+.version:hover,
+.height:hover,
+.more:hover,
+h2:hover,
+.address:hover {
+  background-color: var(--l3text);
+}
+
+
+.container {
+  margin: 0px 10px;
+  overflow-x: scroll;
+}
+
+.text {
+  margin: 5px 0px;
+  white-space: nowrap;
+  text-align: inherit;
+}
+
+.container::-webkit-scrollbar{
+  display: none;
+}
+

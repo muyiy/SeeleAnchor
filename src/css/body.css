@@ -1,3 +1,149 @@
-body {
-  height: 800px;
+html,
+body
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    overflow-y: scroll;
+
+    width: 100%;
+    height: 100%;
+    margin: 0;
+
+    user-select: none;
+
+    color: var(--l0text);
+    /* background-color: #fff; */
+    background-color: var(--l0background);
+
+    --sidewidth: 66px;
+    --topheight: 66px;
+}
+
+html::-webkit-scrollbar
+{
+    display: none;
+}
+
+.page
+{
+    overflow-x: show;
+}
+
+.side
+{
+    position: fixed;
+    z-index: 3;
+    top: 0;
+    left: 0;
+
+    float: left;
+
+    width: var(--sidewidth);
+    height: 100%;
+    padding-top: 20px;
+
+    background-color: var(--l1background);
+}
+
+.side div img
+{
+    width: calc(100% - 2*20px);
+    padding: 20px;
+
+    filter: var(--l1tf);
+}
+
+.side div img:hover,
+.side div.active img
+{
+    width: calc(100% - 2*20px);
+    padding: 20px;
+
+    cursor: pointer;
+
+    filter: var(--hlgf);
+}
+
+.main
+{
+    overflow-y: scroll;
+
+    width: 100%;
+    width: calc(100% - var(--sidewidth) - 2*20px);
+    min-width: 550px;
+    height: 100%;
+    margin: 100px 0;
+    margin-left: var(--sidewidth);
+    padding: 20px;
+}
+
+div h1
+{
+    position: fixed;
+    z-index: 1;
+    /* x y blur extend */
+
+    width: calc(100% - var(--sidewidth) - 4*20px);
+    margin-top: -120px;
+    padding: 20px;
+
+    opacity: .98;
+    border-radius: 5px;
+    background-color: var(--l1background);
+}
+
+div h1:hover,
+.add:hover
+{
+    /* box-shadow: 1px 1px 5px 1px var(--l3text); */
+}
+
+.add
+{
+    position: fixed;
+    /* position: absolute; */
+    z-index: 1;
+    right: 40px;
+    bottom: 40px;
+
+    width: 70px;
+    height: 70px;
+
+    border-radius: 40px;
+    background-color: var(--l1background);
+}
+
+.add img
+{
+    width: calc(100% - 2*20px);
+    padding: 20px;
+
+    filter: var(--l1tf);
+}
+
+.add:hover img{
+  cursor: pointer;
+}
+
+.content
+{
+    display: none;
+
+    height: 100%;
+
+    animation: fadeEffect 1s;
+}
+
+@keyframes fadeEffect
+{
+    from
+    {
+        opacity: 0;
+    }
+    to
+    {
+        opacity: 1;
+    }
 }

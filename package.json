@@ -22,7 +22,11 @@
   },
   "homepage": "https://github.com/muyiy/SeeleAnchor#readme",
   "dependencies": {
+    "anchorsdk": "file:anchorSDK",
+    "slang": "file:slang",
+    "seele": "file:seele",
     "electron": "^7.1.2",
+    "fs-extra": "^8.1.0",
     "sqlite3": "^4.1.0"
   }
 }

@@ -1,5 +1,7 @@
 const { Menu, app } = require('electron')
 
+module.exports.createMenu = createMenu
+
 function createMenu(mainWindow) {
   const i18n = new(require('./lang/i18n'))
   const deve = {
@@ -199,5 +201,3 @@ function refreshApp(win, lang) {
   win.webContents.executeJavaScript('rewriteHtml()');
   // win.webContents.executeJavaScript('location.reload()');
 }
-
-module.exports.createMenu = createMenu
