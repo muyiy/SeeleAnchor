@@ -9,10 +9,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cli-spinners": "^2.2.0",
     "keccak": "^2.0.0",
+    "ora": "^4.0.3",
     "rlp": "^2.2.4",
     "scrypt-js": "^2.0.4",
     "secp256k1": "^3.7.1",
+    "solc": "^0.5.13",
+    "terminal-kit": "^1.32.1",
     "web3": "^1.2.4",
     "xmlhttprequest": "^1.8.0"
   }

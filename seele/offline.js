@@ -5,11 +5,12 @@ const secp256k1         = require('secp256k1') // for elliptic operations
 const keyfile           = require('./keyfile')
 let shardnum = 4
 
-console.log(keyfile);
+// console.log(keyfile);
 module.exports = {
   key: {
-    spawn: generateKeypair,
-    shard: shardOfPub
+    spawn : generateKeypairByShard,
+    shard : shardOfPub,
+    pubof : publicKeyOf
   },
   keyfile: keyfile,
   tx: {
@@ -22,7 +23,7 @@ async function constructor(keyfileDir) {
     this.keyfileDir = keyfileDir || '~/.anchor';
   }
   
-async function initTx(pubkey, to, amount, payload){
+function initTx(pubkey, to, amount, payload){
     //verify pubkey, to, amount, payload?
     return {
           "Type":         0,
@@ -37,33 +38,33 @@ async function initTx(pubkey, to, amount, payload){
     }
   }
   
-async function signTx(prikey, tx){
-    // check validity 
-    var infolist = [
-      tx.Type,
-      tx.From,
-      tx.To,
-      tx.Amount,
-      tx.AccountNonce,
-      tx.GasPrice,
-      tx.GasLimit,
-      tx.Timestamp,
-      tx.Payload
-    ]
-    
-    this.hash = "0x"+createKeccakHash('keccak256').update(RLP.encode(infolist)).digest().toString('hex')
-    var signature = secp256k1.sign(Buffer.from(this.hash.slice(2), 'hex'), Buffer.from(prikey.slice(2), 'hex'))
-    this.sign = Buffer.concat([signature.signature,Buffer.from([signature.recovery])]).toString('base64')
-    this.Data = tx
-    this.txDone = {
-      "Hash": this.hash,
-      "Data": this.Data,
-      "Signature": {
-        "Sig": this.sign,
-      }
+function signTx(prikey, tx){
+  // check validity 
+  var infolist = [
+    tx.Type,
+    tx.From,
+    tx.To,
+    tx.Amount,
+    tx.AccountNonce,
+    tx.GasPrice,
+    tx.GasLimit,
+    tx.Timestamp,
+    tx.Payload
+  ]
+  
+  var hash = "0x"+createKeccakHash('keccak256').update(RLP.encode(infolist)).digest().toString('hex')
+  var signature = secp256k1.sign(Buffer.from(hash.slice(2), 'hex'), Buffer.from(prikey.slice(2), 'hex'))
+  var sign = Buffer.concat([signature.signature,Buffer.from([signature.recovery])]).toString('base64')
+  var Data = tx
+  var txDone = {
+    "Hash": hash,
+    "Data": Data,
+    "Signature": {
+      "Sig": sign,
     }
-    return this.txDone
   }
+  return txDone
+}
   
 async function validPub(pubkey){
     if (!(/^(0x)?[0-9a-f]{40}$/.test(pubkey) || /^(0x)?[0-9A-F]{40}$/.test(pubkey))) {
@@ -106,7 +107,7 @@ async function txValidity(tx){
     //nonce, amount, price and limit must be positive integers
   }
   
-async function publicKeyOf(privateKey){
+function publicKeyOf(privateKey){
     if (privateKey.length!=66){throw "privatekey string should be of lenth 66"} 
     if (privateKey.slice(0,2)!="0x"){throw "privateKey string should start with 0x"}
     const inbuf = Buffer.from(privateKey.slice(2), 'hex');
@@ -147,7 +148,7 @@ function generateKeypairByShard(shard){
   if ( /^[1-4]$/.test(shard) ) {
     do{
       keypair = generateKeypair()
-    } while (shardOfPub(keypair.publickey) != shard)
+    } while (shardOfPub(keypair.publicKey) != shard)
     return keypair
   } else {
     return generateKeypair()

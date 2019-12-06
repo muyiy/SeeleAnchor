@@ -1,6 +1,6 @@
 const seeleJSONRPC  = require('./jsonrpc')
 const seeleOFFLINE  = require('./offline')
-console.log(seeleOFFLINE);
+// console.log(seeleOFFLINE);
 
 module.exports = {
   offline: seeleOFFLINE,

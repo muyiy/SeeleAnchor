@@ -23,13 +23,12 @@ module.exports = {
     account   : account
 }
 
-
 async function initiate(){
   return new Promise(function(resolve, reject) {
     Promise.all([
       fs.ensureDir(contract),
       fs.ensureDir(account),
-      fs.copy(srcConfig, config, { overwrite: false, errorOnExist: false})
+      fs.copy(srcConfig, config, { overwrite: true, errorOnExist: false})
     ]).then(function(values) {
       console.log('paths: initation complete');
       resolve(values)

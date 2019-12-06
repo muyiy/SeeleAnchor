@@ -19,9 +19,11 @@ module.exports = {
     save: saveKeyfiles,
     drop: dropKeyfiles,
     back: backKeyfiles,
-    make: makeKeyfile,
+    make: makeKeyfile
   }
 }
+
+
 
 async function loadSettings(){
   var init = await paths.initiate()
@@ -62,7 +64,26 @@ async function saveSettings(settings){
 }
 
 async function loadKeyfiles(){
-  
+  fs.readdir(paths.account).then( nets => {
+    console.log(nets);
+    // var keyfiles = {}
+    // for ( var net of nets ) {
+    //   // keyfiles[net] = 
+    //   // path.join(paths.account, )
+    //   var netpath = path.join(paths.account, net)
+    //   fs.readdir(netpath).then( keys => {
+    //     // console.log(keys);
+    //     for ( var key of keys ) {
+    //       var keypath = path.join(netpath, key)
+    //       fs.readdir(keypath)
+    //       // keyfiles[net][key] = {
+    //       //   name: fs.readdir()[0]
+    //       //   file: 
+    //       // }
+    //     }
+    //   })
+    // }
+  });
 }
 
 async function makeKeyfile(item){
@@ -72,9 +93,10 @@ async function makeKeyfile(item){
     console.log(item);
     console.log(dst);
     fs.pathExists(dst).then( exists => {
-      console.log(exists);
+      
       if ( exists ) {
-        reject(`${item.file.address} exists in ${item.net}`)
+        // console.log();
+        reject(`${item.file.address} already exists in ${item.net} network`)
       } else {
         console.log('going to make file');
         fs.ensureFile(path.join(dst, name)).then( ()=>{

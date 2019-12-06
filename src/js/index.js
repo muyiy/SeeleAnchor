@@ -1,5 +1,5 @@
-const { paths, io } = require('anchorsdk')
-const sle = require('seele')
+const { io }  = require('anchorsdk')
+const sle     = require('seele')
 
 function networkCell(info){
   var cell = document.createElement('div')
@@ -210,39 +210,13 @@ async function drawNetworkContent(activated){
 }
 
 async function drawAccountContent(Accounts){
-  // create keyfiles 
-  // console.log(sle);
   console.log(sle.offline.keyfile);
-  // var pri = '0x79cbf2f9cd3f055f7397dac76487638c11f56deaedee347e97e43ab80ea3a3f3'
-  // var keyfile = await sle.offline.keyfile.lock(pri, '123')
-  // console.log(keyfile);
-  for ( var i of [1,2,3,4] ) {
-    sle.offline.keyfile.lock(sle.offline.key.spawn(i).privateKey,'123').then( keyfile => {
-      io.keyfile.make({
-        name: 'key',
-        net: 'Seele',
-        file: keyfile
-      })
-    }).catch( err => {
-      console.log(err);
-    })
-  }
 }
 
 async function drawContractContent(Contracts){
-  var content = document.getElementsByClassName('contracts')[0]
-  
-  var title   = document.createElement('h1')
-  title.innerText = 'Contracts'
-  content.appendChild(title)
 }
 
 async function drawSettingsContent(Settings){
-  var content = document.getElementsByClassName('settings')[0]
-  
-  var title   = document.createElement('h1')
-  title.innerText = 'Settings'
-  content.appendChild(title)
 }
 
 async function drawNetworkPage(network){

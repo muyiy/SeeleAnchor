@@ -58,37 +58,39 @@ class seeleJSONRPC {
 
       request.onload = function () {
         if (request.readyState === 4 && request.timeout !== 1) {
-          var result = request.responseText
+          var result = JSON.parse(request.responseText)
           try {
-            result = JSON.parse(result);
             if (result.error) {
-              reject(args,new Error(JSON.stringify(result)));
-              return;
+              result.error.args = JSON.stringify(args)
+              result.error.command = command.toString()
+              resolve(result)
+            } else {
+              resolve(result.result)
             }
-
-            resolve(result.result);
           } catch (exception) {
-            reject(args,new Error(exception + ' : ' + JSON.stringify(result)));
+            reject(new Error(exception))
           }
         }
       };
 
       request.ontimeout = function () {
-        reject(args,new Error('CONNECTION TIMEOUT: timeout of ' + currHost + ' ms achieved'));
+        // reject(args,new Error('CONNECTION TIMEOUT: timeout of ' + currHost + ' ms achieved'));
+        reject(new Error('CONNECTION TIMEOUT: timeout of ' + currHost + ' ms achieved'))
       };
 
       request.onerror = function () {
         if(request.status == 0){
-          reject(args,new Error('CONNECTION ERROR: Couldn\'t connect to node '+currHost +'.'));
+          reject(new Error('CONNECTION ERROR: Couldn\'t connect to node '+currHost +'.'))
         }else{
-          reject(args,request.statusText);
+          reject(new Error(request.statusText))
         }
       };
 
       try {
         request.send(rpcData);
       } catch (error) {
-        reject(args,new Error('CONNECTION ERROR: Couldn\'t connect to node '+ currHost +'.'));
+        reject(JSON.parse(JSON.stringify(error)))
+        // reject(args, new Error('CONNECTION ERROR: Couldn\'t connect to node '+ currHost +'.'));
       }
       return request;
     })
@@ -127,8 +129,9 @@ class seeleJSONRPC {
     }
 
     var result = request.responseText;
-
+  
     try {
+      // console.log(result);
       result = JSON.parse(result);
       if (result.error) {
         throw new Error(JSON.stringify(result));
