@@ -1,0 +1,25 @@
+[
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_preBytes",
+        "type": "bytes"
+      },
+      {
+        "name": "_postBytes",
+        "type": "bytes"
+      }
+    ],
+    "name": "concat",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bytes"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "pure",
+    "type": "function"
+  }
+]

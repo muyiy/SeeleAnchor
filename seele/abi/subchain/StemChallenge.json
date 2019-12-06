@@ -1,0 +1,115 @@
+[
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "self",
+        "type": "StemCore.ChainStorage storage"
+      },
+      {
+        "name": "_challengeIndex",
+        "type": "uint256"
+      },
+      {
+        "name": "_recentTxs",
+        "type": "bytes"
+      },
+      {
+        "name": "_signatures",
+        "type": "bytes"
+      },
+      {
+        "name": "_indices",
+        "type": "bytes"
+      },
+      {
+        "name": "_preState",
+        "type": "bytes"
+      },
+      {
+        "name": "_inclusionProofs",
+        "type": "bytes"
+      },
+      {
+        "name": "_msgSender",
+        "type": "address"
+      }
+    ],
+    "name": "handleResponseToChallenge",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "self",
+        "type": "StemCore.ChainStorage storage"
+      },
+      {
+        "name": "_encodedAddresses",
+        "type": "bytes"
+      },
+      {
+        "name": "_inspecBlock",
+        "type": "bytes"
+      },
+      {
+        "name": "_inspecBlockSignature",
+        "type": "bytes"
+      },
+      {
+        "name": "_inspecTxHash",
+        "type": "bytes32"
+      },
+      {
+        "name": "_inspecState",
+        "type": "bytes"
+      },
+      {
+        "name": "_indices",
+        "type": "bytes"
+      },
+      {
+        "name": "_inclusionProofs",
+        "type": "bytes"
+      }
+    ],
+    "name": "processChallenge",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "name": "challengeTarget",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "blkNum",
+        "type": "uint256"
+      }
+    ],
+    "name": "BlockChallenge",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "name": "challengeIndex",
+        "type": "uint256"
+      }
+    ],
+    "name": "RemoveBlockChallenge",
+    "type": "event"
+  }
+]

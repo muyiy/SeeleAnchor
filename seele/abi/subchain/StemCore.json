@@ -1,0 +1,398 @@
+[
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "self",
+        "type": "StemCore.ChainStorage storage"
+      }
+    ],
+    "name": "getLastChildBlockNumber",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "self",
+        "type": "StemCore.ChainStorage storage"
+      },
+      {
+        "name": "_user",
+        "type": "address"
+      },
+      {
+        "name": "_amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "createUserExitRequest",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "self",
+        "type": "StemCore.ChainStorage storage"
+      },
+      {
+        "name": "_operator",
+        "type": "address"
+      }
+    ],
+    "name": "createOperatorExitRequest",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "self",
+        "type": "StemCore.ChainStorage storage"
+      },
+      {
+        "name": "_user",
+        "type": "address"
+      },
+      {
+        "name": "_deposit",
+        "type": "uint256"
+      }
+    ],
+    "name": "isValidUserDeposit",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "self",
+        "type": "StemCore.ChainStorage storage"
+      },
+      {
+        "name": "_operator",
+        "type": "address"
+      },
+      {
+        "name": "_deposit",
+        "type": "uint256"
+      }
+    ],
+    "name": "isValidAddOperator",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "self",
+        "type": "StemCore.ChainStorage storage"
+      },
+      {
+        "name": "_user",
+        "type": "address"
+      }
+    ],
+    "name": "executeUserExit",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "self",
+        "type": "StemCore.ChainStorage storage"
+      },
+      {
+        "name": "_user",
+        "type": "address"
+      },
+      {
+        "name": "_refundAccount",
+        "type": "address"
+      },
+      {
+        "name": "_msgSender",
+        "type": "address"
+      },
+      {
+        "name": "_msgValue",
+        "type": "uint256"
+      }
+    ],
+    "name": "createUserDepositRequest",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "self",
+        "type": "StemCore.ChainStorage storage"
+      }
+    ],
+    "name": "isLastChildBlockConfirmed",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "self",
+        "type": "StemCore.ChainStorage storage"
+      },
+      {
+        "name": "_operator",
+        "type": "address"
+      }
+    ],
+    "name": "executeOperatorExit",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "self",
+        "type": "StemCore.ChainStorage storage"
+      }
+    ],
+    "name": "getExitBlockNumber",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "self",
+        "type": "StemCore.ChainStorage storage"
+      },
+      {
+        "name": "_account",
+        "type": "address"
+      }
+    ],
+    "name": "existUnresolvedRequest",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "self",
+        "type": "StemCore.ChainStorage storage"
+      }
+    ],
+    "name": "getDepositBlockNumber",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "self",
+        "type": "StemCore.ChainStorage storage"
+      },
+      {
+        "name": "_operator",
+        "type": "address"
+      },
+      {
+        "name": "_refundAccount",
+        "type": "address"
+      },
+      {
+        "name": "_msgSender",
+        "type": "address"
+      },
+      {
+        "name": "_msgValue",
+        "type": "uint256"
+      }
+    ],
+    "name": "createAddOperatorRequest",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "self",
+        "type": "StemCore.ChainStorage storage"
+      }
+    ],
+    "name": "getLastConfirmedChildBlockNumber",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "name": "account",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "depositBlockNum",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "name": "amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "AddOperatorRequest",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "name": "account",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "depositBlockNum",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "name": "amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "UserDepositRequest",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "name": "account",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "exitBlockNum",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "name": "amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "OperatorExitRequest",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "name": "account",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "exitBlockNum",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "name": "amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "UserExitRequest",
+    "type": "event"
+  }
+]

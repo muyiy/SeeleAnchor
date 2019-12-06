@@ -1,0 +1,52 @@
+[
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "self",
+        "type": "StemCore.ChainStorage storage"
+      },
+      {
+        "name": "_subchainName",
+        "type": "bytes32"
+      },
+      {
+        "name": "_genesisInfo",
+        "type": "bytes32[]"
+      },
+      {
+        "name": "_staticNodes",
+        "type": "bytes32[]"
+      },
+      {
+        "name": "_creatorDeposit",
+        "type": "uint256"
+      },
+      {
+        "name": "_ops",
+        "type": "address[]"
+      },
+      {
+        "name": "_opsDeposits",
+        "type": "uint256[]"
+      },
+      {
+        "name": "_refundAccounts",
+        "type": "address[]"
+      },
+      {
+        "name": "_msgSender",
+        "type": "address"
+      },
+      {
+        "name": "_msgValue",
+        "type": "uint256"
+      }
+    ],
+    "name": "createSubchain",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]

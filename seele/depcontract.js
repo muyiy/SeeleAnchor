@@ -9,12 +9,14 @@ const Web3  = require('web3')
 let   solc  = require('solc')
 let   spin  = ora()
 var   web3  = new Web3
+// console.log(fs);
 // network 
 let node = [ 0, 'http://117.50.97.136:18037', 'http://117.50.97.136:8038', 'http://104.218.164.77:8039', 'http://117.50.97.136:8036']
 // 0x4018c661af9979d2ed47a21a44ed5ff7eb27af2af95a4878ab76a32d42b9959a
 // compiling
-var skipDeploy  = false
-var skipCompile = true
+var skipDeploy  = true
+var skipCompile = false
+let abidir= path.join(__dirname, 'abi', 'subchain')
 let dir   = path.join(__dirname, 'contract', 'subchain')
 let temp  = path.join(__dirname, 'tempp.json')
 let ver   = '0.4.24'
@@ -217,7 +219,22 @@ async function compilepromise(code, solidityPath){
         contracts.push(abstract)
       }
       // console.log(contracts);
-      resolve(contracts)
+      fs.ensureDir(abidir, err => {
+        console.log(err) // => null
+        var writers = []
+        for ( var contract of contracts ) {
+          // console.log(contract.abi);
+          // var data = new Uint8Array(Buffer.from(contract.abi));
+          var data = JSON.parse(contract.abi)
+          var name = contract.contract.replace(/\.sol/,'.json')
+          var abis = path.join(abidir, name)
+          // console.log(abis);
+          writers.push(fs.writeJSON( abis, data, {overwrite: true, EOL:'\n', spaces:'\t'}))
+        }
+        Promise.all(writers).then( () => {
+          resolve(contracts)
+        })
+      })
     })
   // },0)
 }

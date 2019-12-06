@@ -1,0 +1,129 @@
+[
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "self",
+        "type": "StemCore.ChainStorage storage"
+      }
+    ],
+    "name": "totalFee",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "self",
+        "type": "StemCore.ChainStorage storage"
+      },
+      {
+        "name": "_blkNum",
+        "type": "uint256"
+      },
+      {
+        "name": "_balanceTreeRoot",
+        "type": "bytes32"
+      },
+      {
+        "name": "_txTreeRoot",
+        "type": "bytes32"
+      },
+      {
+        "name": "_accounts",
+        "type": "address[]"
+      },
+      {
+        "name": "_updatedBalances",
+        "type": "uint256[]"
+      },
+      {
+        "name": "_fee",
+        "type": "uint256"
+      },
+      {
+        "name": "_msgSender",
+        "type": "address"
+      }
+    ],
+    "name": "handleRelayBlock",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "self",
+        "type": "StemCore.ChainStorage storage"
+      }
+    ],
+    "name": "totalBalance",
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "self",
+        "type": "StemCore.ChainStorage storage"
+      },
+      {
+        "name": "_blkNum",
+        "type": "uint256"
+      }
+    ],
+    "name": "doReverseBlock",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "name": "blkNum",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "name": "timestamp",
+        "type": "uint256"
+      }
+    ],
+    "name": "BlockSubmitted",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "name": "blkNum",
+        "type": "uint256"
+      }
+    ],
+    "name": "BlockReversed",
+    "type": "event"
+  }
+]

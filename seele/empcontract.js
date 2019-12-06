@@ -13,7 +13,7 @@ var address  = '0xd75fbd11818d0f1b45054142d01f584a08970002'
 var shard    = sle.offline.key.shard(address)
 var rpc      = new sle.rpcjson(node[shard], 1)
 let byt      = null
-var abi = fs.readJsonSync(path.join(__dirname, 'abi.json'))
+var abi = fs.readJsonSync(path.join(__dirname, 'abi', 'subchain', 'StemRootchain.json'))
 
 var req
 req = makeReq('getTotalDeposit', )
@@ -28,10 +28,10 @@ req = makeReq('getTotalDeposit', )
 // req = makeReq('getContractBalance',)
 // req = makeReq('getCurDepositBlockNum', )
 // req = makeReq('submitBlock', 1000, '0x4f2df4a21621b18c71619239c398657a23f198a40a8deff701e340e6e34d0823', '0x4f2df4a21621b18c71619239c398657a23f198a40a8deff701e340e6e34d0823', ['0x2E361D2057aEdeA19243489DE9fbC517b8fa2CE8', '0xca35b7d915458ef540ade6068dfe2f44e8fa733c', '0x627306090abab3a6e1400e9345bc60c78a8bef57'], [100, 90, 105], 0)
-req = makeReq('discard', )
+// req = makeReq('discard', )
 // req =  makeReq('getOwner',)
-// call(address, req.bytes, req.types )
-employ(address, req.bytes, req.types )
+call(address, req.bytes, req.types )
+// employ(address, req.bytes, req.types )
 
 async function call(address, byt, types){
   // -1 is the height
