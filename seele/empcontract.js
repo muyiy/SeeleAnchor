@@ -15,8 +15,12 @@ var rpc      = new sle.rpcjson(node[shard], 1)
 let byt      = null
 var abi = fs.readJsonSync(path.join(__dirname, 'abi', 'subchain', 'StemRootchain.json'))
 
+// var hash = '0x4d7de0030128fa5fa16c1e818362406d2d9b8d53362c26ce7f392767c5949f4d'
+// var name = 'printAddress'
+// event(hash, name, abi)
+
 var req
-req = makeReq('getTotalDeposit', )
+// req = makeReq('getTotalDeposit', )
 // req = makeReq('getOpsLen',)
 // req = makeReq('getCurDepositBlockNum',)
 // req = makeReq('getLastChildBlockNum',)
@@ -30,8 +34,20 @@ req = makeReq('getTotalDeposit', )
 // req = makeReq('submitBlock', 1000, '0x4f2df4a21621b18c71619239c398657a23f198a40a8deff701e340e6e34d0823', '0x4f2df4a21621b18c71619239c398657a23f198a40a8deff701e340e6e34d0823', ['0x2E361D2057aEdeA19243489DE9fbC517b8fa2CE8', '0xca35b7d915458ef540ade6068dfe2f44e8fa733c', '0x627306090abab3a6e1400e9345bc60c78a8bef57'], [100, 90, 105], 0)
 // req = makeReq('discard', )
 // req =  makeReq('getOwner',)
-call(address, req.bytes, req.types )
+// call(address, req.bytes, req.types )
 // employ(address, req.bytes, req.types )
+
+async function event(hash, name, abi){
+  var receipt = await rpc.getReceiptByTxHash(hash,"")
+  var logs = receipt.logs
+  for ( var log of logs ) {
+    var obj = findByField(abi, 'name', name).inputs
+    var hex = log.data
+    var tpc = log.topics
+    var result = web3.eth.abi.decodeLog(obj, hex, tpc)
+    console.log(result);
+  }
+}
 
 async function call(address, byt, types){
   // -1 is the height
