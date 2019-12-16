@@ -1,0 +1,13 @@
+.accounts.panel .titleBar img{
+  float: right;
+  margin: 25px 15px 0px 15px;
+  padding: 10px;
+  height: calc(100% - 2*25px);
+  filter: var(--l1tf);
+}
+
+.accounts.panel .titleBar img:hover{
+  transition: 1s;
+  filter: var(--hlbf);
+  cursor: pointer;
+}

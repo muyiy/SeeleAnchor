@@ -1,0 +1,61 @@
+.nodes.panel .titleBar img{
+  float: right;
+  margin: 25px 15px 0px 15px;
+  padding: 10px;
+  height: calc(100% - 2*25px);
+  filter: var(--l1tf);
+}
+
+.nodes.panel .titleBar img:hover{
+  transition: 1s;
+  filter: var(--hlbf);
+  cursor: pointer;
+}
+
+
+.nodes.table {
+  margin: 20px 0px;
+  /* float: left;
+  clear: both;
+  width: 100%; */
+}
+
+.nodes.table .title {
+  float: left;
+  clear: both;
+  font-size: 30px;
+  padding: 30px 10px;
+}
+
+.nodes.table .row {
+  float: left;
+  clear: both;
+  padding: 10px;
+  width: calc(100% - 2*10px);
+  color: var(--hlblue);
+  opacity: 0.3;
+}
+
+.nodes.table .row:hover {
+  background-color: var(--hlgrey);
+}
+
+.nodes.table .row.applied {
+  /* font-weight: 900; */
+  opacity: 1;
+}
+
+.nodes.table .row.i1{}
+.nodes.table .row.i2{}
+.nodes.table .row.i3{}
+.nodes.table .row.i4{}
+
+.nodes.table .row .cell.indx{ float: left ; width: 10%; }
+.nodes.table .row .cell.addr{ float: left ; width: 30%; }
+.nodes.table .row .cell.info{ float: right; width: 50%; color: var(--l3text)}
+.nodes.table .row .cell.summ{ float: right; width: 10%; }
+
+.nodes.table .row .cell.summ.warning{  color: var(--hlyellow);}
+.nodes.table .row .cell.summ.good{  color: var(--hlgreen);}
+.nodes.table .row .cell.summ.bad{  color: var(--hlred);}
+.nodes.table .row .cell.summ.disconnect{  color: var(--l3text);}

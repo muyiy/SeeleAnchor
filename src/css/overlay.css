@@ -1,0 +1,139 @@
+#message {
+  display: none;
+  animation: scale 0.2s;
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: auto;
+
+  text-align: center;
+  color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  background-color: rgba(0,0,0,0.8);
+  z-index: 3;
+}
+
+@keyframes scale {
+  0%    { transform: translate(-50%, -50%) scale(0);}
+  100%  { transform: translate(-50%, -50%) scale(1.0);}
+}
+
+#form .display{
+  padding: 20px;
+  width: calc(100% - 2*20px);
+  line-height: 1.6;
+}
+
+#form .buttongroup.bottom {
+  margin-top: 20px;
+  width: 100%;
+  /* background-color: #f2f2f2; */
+  /* position: absolute;
+  bottom: 0; */
+}
+
+#form .buttongroup .button:hover{
+  background-color: var(--hlblue);
+  transition: 0.4s;
+}
+
+#form .buttongroup .button{
+  text-align: center;
+  float: left;
+  padding: 20px 0px;
+  cursor: pointer;
+  border-top: 1px solid var(--hlblue);
+}
+
+#form .buttongroup .cancel{
+  width: 50%;
+}
+
+#form .buttongroup .sure{
+  border-left: 1px solid var(--hlblue);
+  width: calc(50% - 1px);
+}
+
+#form .field{
+  /* background-color: #111111; */
+  width: calc(100% - 2*20px);
+  padding: 0px 20px;
+}
+
+#form .field .content{
+  /* border-radius: 5px; */
+  /* border-bottom: 1px solid var(--hlblue); */
+  border-bottom: 1px solid var(--hlgrey);
+  padding: 5px;
+  width: calc(100% - 2*1px - 2*5px);
+}
+
+#form .field .err{
+  text-align: right;
+  color: var(--hlred);
+  line-height: normal;
+  padding: 5px 6px;
+  width: calc(100% - 2*1px - 2*5px);
+}
+
+#form .field .content .input{
+  --inputheight: 18px;
+}
+
+#form .field .content .input img{
+  height: var(--inputheight);
+  padding: 0px 5px;
+  filter: var(--l1tf);
+}
+
+#form .field .content .input input{
+  resize:none;
+  width: calc(100% - 15px - var(--inputheight));
+  overflow:auto;
+  padding:0px;
+  outline:0px;
+  background-color:transparent;
+  border: 0px;
+  color: inherit;
+  font-size: var(--inputheight);
+}
+
+
+#form {
+  display: none;
+  position: fixed;
+  z-index: 5;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  max-width: 600px;
+  max-height: 200px;
+  width: 40%;
+  max-height: 80%;
+  background-color: var(--l2background);
+  animation: fade 0.5s;
+  overflow: hidden;
+}
+
+#dask {
+  display: none;
+  background-color: rgba(0,0,0, 0.2);
+  height: 100%;
+  width:100%;
+  position: fixed;
+  z-index: 4;
+  cursor: pointer;
+  backdrop-filter: blur(2px);
+  animation: fade 0.5s;
+}
+
+
+
+@keyframes fade {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}

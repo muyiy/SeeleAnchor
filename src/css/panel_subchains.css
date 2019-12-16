@@ -1,0 +1,215 @@
+.subchains.panel .titleBar img{
+  float: right;
+  margin: 25px 15px 0px 15px;
+  padding: 10px;
+  height: calc(100% - 2*25px);
+  filter: var(--l1tf);
+}
+
+.subchains.panel .titleBar img:hover{
+  transition: 1s;
+  filter: var(--hlbf);
+  cursor: pointer;
+}
+
+.subchains.panel .titleBar img.active{
+  filter: var(--hlbf);
+}
+
+.subchains.panel {
+  margin-top: calc(var(--topheight) + 3px);
+  height: 100%;
+}
+
+.subchains .section {
+  height: 100%;
+
+}
+
+.subchains .section .controls{
+  /* background-color: #111111; */
+  border-right: 3px solid var(--hlgrey);
+  width: calc(20% - 3px);
+  height: 100%;
+  float: left;
+}
+
+.controls select{
+  margin: 20px;
+  width: calc(100% - 2*21px);
+  background-color: transparent;
+  border: 1px solid var(--hlgrey);
+  height: 40px;
+  color: inherit;
+  font-size: 20px;
+}
+
+.controls select:focus{
+  outline: none;
+}
+
+.controls select:hover{
+  border: 1px solid var(--hlblue);
+}
+
+.subchains .section .sheets{
+  width: calc(80%);
+  float: left;
+  height: 100%;
+}
+
+.subchains .section .sheets .sheet{
+  display: none;
+  margin: 0;
+  height: 100%;
+  /* background-color: #111111; */
+  overflow: hidden;
+}
+
+.subchains .section .sheets .sheet.active{
+  display: block;
+  animation: fade 1s;
+}
+
+@keyframes fade {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.sheet.privilege{
+  padding: 0px 40px;
+  width: calc(100% - 2*40px);
+  /* overflow: scroll; */
+}
+
+.section{overflow: scroll;}
+.section::-webkit-scrollbar{
+  display: none;
+}
+
+.sheet.privilege .input{
+  --inputheight: 18px;
+}
+
+.sheet.privilege .input img{
+  height: var(--inputheight);
+  padding: 0px 5px;
+  filter: var(--l1tf);
+}
+
+.sheet.privilege .input input{
+  resize:none;
+  padding: 0px 20px;
+  overflow:auto;
+  border: 0px;
+  border: 3px solid transparent;
+  border-radius: 5px;
+  /* width: calc(100% - 2*23px - var(--inputheight)); */
+  width: calc(100% - 2*28px - var(--inputheight));
+  outline:0px;
+  background-color:transparent;
+  color: inherit;
+  font-size: var(--inputheight);
+}
+
+.sheet.privilege .input input:focus{
+  border-color: var(--hlgrey);
+}
+
+#privilegeSheetContent{
+  padding-top: 30px;
+}
+
+#privilegeSheetContent .title{
+  /* font-size: 30px; */
+  color: var(--hlgrey2);
+}
+
+#privilegeSheetContent .row{
+  user-select: text;
+  font-size: 18px;
+  line-height: 1.6;
+  padding: 20px 0px;
+}
+
+.sheet .info{
+  --border: 3px;
+  height: calc(100% - var(--border) - 200px);
+  width: 100%;
+  border-bottom: var(--border) solid var(--hlgrey);
+}
+
+.sheet .action{
+  height: 200px;
+  width: 100%;
+  --sidedivision: 70%;
+  --iconheights: 20px;
+}
+
+.sheet .action .inputs{
+  float: left;
+  margin-left: 10px;
+  width: calc(var(--sidedivision) - 50px);
+  height: 100%;
+}
+
+.sheet .action .inputs .icons img{
+  margin-top: 10px;
+  height: var(--iconheights);
+  padding: 10px;
+  filter: var(--l1tf);
+}
+
+.sheet .action .inputs .input{
+  width: calc(100% - 50px);
+}
+
+.sheet .action .inputs .input input{
+  resize:none;
+  padding: 0px 20px;
+  overflow:auto;
+  border: 3px solid transparent;
+  border-bottom: 3px solid var(--hlgrey);
+  width: calc(100% - 2*28px);
+  outline:0px;
+  background-color:transparent;
+  color: inherit;
+  font-size: var(--iconheights);
+}
+
+.sheet .action .inputs .input input:focus{
+  /* border: 3px solid var(--hlgrey); */
+  /* border-radius: 5px; */
+}
+
+.sheet .action .buttons {
+  float: left;
+  width: calc(100% - var(--sidedivision));
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+}
+
+.sheet .action .send,
+.sheet .action .challenge,
+.sheet .action .relay,
+.sheet .action .leave,
+.sheet .action .enter
+{
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 3px solid var(--hlgrey);
+  text-align: center;
+  background-color: var(--hlgrey);
+}
+
+.sheet .action .send:hover,
+.sheet .action .challenge:hover,
+.sheet .action .relay:hover,
+.sheet .action .leave:hover,
+.sheet .action .enter:hover{
+  transition: 1s;
+  border-color: var(--hlblue);
+}

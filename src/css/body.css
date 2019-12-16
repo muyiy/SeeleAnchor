@@ -1,6 +1,12 @@
+@font-face {
+  font-family: boo;
+  src: url('./../ttf/STHEITI.ttf');
+}
+
 html,
 body
 {
+    font-family: boo;
     position: fixed;
     top: 0;
     left: 0;
@@ -21,7 +27,7 @@ body
     --topheight: 66px;
 }
 
-#drag 
+#drag
 {
   -webkit-app-region: drag;
   height: 20px;
@@ -33,6 +39,10 @@ body
   z-index: 10;
 }
 
+.pannel::-webkit-scrollbar,
+.main::-webkit-scrollbar,
+.page::-webkit-scrollbar,
+body::-webkit-scrollbar,
 html::-webkit-scrollbar
 {
     display: none;
@@ -40,11 +50,13 @@ html::-webkit-scrollbar
 
 .page
 {
-    overflow-x: show;
+    overflow-x: auto;
+    height: 100%;
 }
 
 .side
 {
+    -webkit-app-region: drag;
     position: fixed;
     z-index: 3;
     top: 0;
@@ -80,31 +92,18 @@ html::-webkit-scrollbar
 
 .main
 {
-    overflow-y: scroll;
+    overflow: visible;
 
-    width: 100%;
     width: calc(100% - var(--sidewidth) - 2*20px);
     min-width: 550px;
-    height: 100%;
-    margin: 100px 0;
+    height: calc(100% - var(--topheight) - 3px);
+
+    padding: 0px 20px 0px 20px;
+    margin-top: var(--topheight);
     margin-left: var(--sidewidth);
-    padding: 20px;
+
 }
 
-div h1
-{
-    position: fixed;
-    z-index: 1;
-    /* x y blur extend */
-
-    width: calc(100% - var(--sidewidth) - 4*20px);
-    margin-top: -120px;
-    padding: 20px;
-
-    opacity: .98;
-    border-radius: 5px;
-    background-color: var(--l1background);
-}
 
 div h1:hover,
 .add:hover
@@ -112,39 +111,13 @@ div h1:hover,
     /* box-shadow: 1px 1px 5px 1px var(--l3text); */
 }
 
-.add
-{
-    position: fixed;
-    /* position: absolute; */
-    z-index: 1;
-    right: 40px;
-    bottom: 40px;
-
-    width: 70px;
-    height: 70px;
-
-    border-radius: 40px;
-    background-color: var(--l1background);
-}
-
-.add img
-{
-    width: calc(100% - 2*20px);
-    padding: 20px;
-
-    filter: var(--l1tf);
-}
-
-.add:hover img{
-  cursor: pointer;
-}
-
-.content
+.panel
 {
     display: none;
 
     height: 100%;
-
+    /* overflow: hidden; */
+    overflow: visible;
     animation: fadeEffect 1s;
 }
 
@@ -158,4 +131,16 @@ div h1:hover,
     {
         opacity: 1;
     }
+}
+
+
+.titleBar {
+  -webkit-app-region: drag;
+  position: fixed;
+  top: 0px;
+  z-index: 2;
+  background-color: var(--l0background);
+  height: var(--topheight);
+  width: calc(100% - 2*20px - var(--sidewidth));
+  border-bottom: 3px solid var(--hlgrey);
 }

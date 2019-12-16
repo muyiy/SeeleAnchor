@@ -20,10 +20,76 @@ module.exports = {
     drop: dropKeyfiles,
     back: backKeyfiles,
     make: makeKeyfile
+  },
+  account: {
+    load: loadAccounts,
+    save: saveAccounts,
+    drop: dropAccounts
   }
 }
 
+async function loadAccounts(){
+  return new Promise(function(resolve, reject) {
 
+  });
+}
+
+async function saveAccounts(list){
+  return new Promise(function(resolve, reject) {
+    var valid = []
+    var wrong = []
+    for ( var account of list ) {
+
+    }
+
+    if (valid.length == 0) {
+      return reject(`not valid ${wrong}`)
+    }
+
+    // const insert   = `INSERT INTO nodes(network, number, address, parentNetwork) VALUES ${valid.join(',')};`
+    // const create   = `CREATE TABLE IF NOT EXISTS nodes( network TEXT NOT NULL, parentNetwork TEXT NOT NULL, address TEXT NOT NULL, number INTEGER NOT NULL, unique(address) );`
+    // console.log(insert);
+    var db = new sqlite3.Database(paths.acdb, (err) => {
+      if (err) {
+        return reject(new Error(err))
+      } else {
+        console.log('DB: Connected!');
+      }
+    });
+
+    db.run(create, (err) => {
+      if (err) {
+        return reject(new Error(err))
+      } else {
+        console.log('DB: Table Accessible');
+      }
+
+      db.run(insert, (err) => {
+        if (err) {
+          reject(new Error(err))
+        }
+
+        console.log(`DB: Insert ${this.lastID}`);
+        db.close((err) => {
+          if (err) {
+            reject(new Error(err))
+            return;
+            // reject('allfake')
+          }
+          console.log('DB: Closed');
+          resolve('addaccounts')
+        });
+      });
+    })
+
+  });
+}
+
+async function dropAccounts(){
+  return new Promise(function(resolve, reject) {
+
+  });
+}
 
 async function loadSettings(){
   var init = await paths.initiate()
@@ -45,7 +111,7 @@ async function saveSettings(settings){
         reject('settings: invalid lang')
         return;
     }
-    
+
     switch (settings.theme) {
       case 'dark': break;
       case 'light': break;
@@ -53,7 +119,7 @@ async function saveSettings(settings){
         reject('settings: invalid theme')
         return;
     }
-    
+
     const data = new Uint8Array(Buffer.from(JSON.stringify(settings)));
     fs.writeJson(paths.config, data, { EOL:'\n', spaces:'\t' }, (err) => {
       if (err) reject(err);
@@ -68,7 +134,7 @@ async function loadKeyfiles(){
     console.log(nets);
     // var keyfiles = {}
     // for ( var net of nets ) {
-    //   // keyfiles[net] = 
+    //   // keyfiles[net] =
     //   // path.join(paths.account, )
     //   var netpath = path.join(paths.account, net)
     //   fs.readdir(netpath).then( keys => {
@@ -78,7 +144,7 @@ async function loadKeyfiles(){
     //       fs.readdir(keypath)
     //       // keyfiles[net][key] = {
     //       //   name: fs.readdir()[0]
-    //       //   file: 
+    //       //   file:
     //       // }
     //     }
     //   })
@@ -93,7 +159,7 @@ async function makeKeyfile(item){
     console.log(item);
     console.log(dst);
     fs.pathExists(dst).then( exists => {
-      
+
       if ( exists ) {
         // console.log();
         reject(`${item.file.address} already exists in ${item.net} network`)
@@ -105,7 +171,7 @@ async function makeKeyfile(item){
           }).catch( err => {
             reject(err)
           })
-        })        
+        })
       }
     }).catch( err=> {
       console.log(err);
@@ -125,11 +191,11 @@ async function backKeyfiles(paths){
 }
 
 async function dropKeyfiles(paths){
-  
+
 }
 
 async function moveKeyfiles(paths, dst){
-  
+
 }
 
 async function saveNodes(list){
@@ -138,39 +204,45 @@ async function saveNodes(list){
     var valid = []
     var wrong = []
     for ( var node of list ) {
+      console.log(node);
       if (  types.isChainName(node[0]) && /^[0-4]$/.test(node[1]) && types.isIpport(node[2]) ) {
-        valid.push(`("${node[0]}","${node[1]}","${node[2]}")`)
+        valid.push(`("${node[0]}","${node[1]}","${node[2]}","${node[3]}")`)
       } else {
         wrong.push(node)
       }
     }
-    const insert   = `INSERT INTO nodes(net, status, ipport) VALUES ${valid.join(',')};`
-    const createDB = `CREATE TABLE IF NOT EXISTS nodes( ipport TEXT NOT NULL, net TEXT NOT NULL, status int NOT NULL, unique(ipport, net, status) )`
-    
+
+    if (valid.length == 0) {
+      return reject(`not valid ${wrong}`)
+    }
+
+    const insert   = `INSERT INTO nodes(network, number, address, parentNetwork) VALUES ${valid.join(',')};`
+    const create   = `CREATE TABLE IF NOT EXISTS nodes( network TEXT NOT NULL, parentNetwork TEXT NOT NULL, address TEXT NOT NULL, number INTEGER NOT NULL, unique(address) );`
+    // console.log(insert);
     var db = new sqlite3.Database(paths.ipdb, (err) => {
       if (err) {
-        resolve(err);
+        return reject(new Error(err))
       } else {
-        console.log('DB: Connected!'); 
+        console.log('DB: Connected!');
       }
     });
-    
-    db.run(createDB, (err) => {
+
+    db.run(create, (err) => {
       if (err) {
-        resolve(err);
+        return reject(new Error(err))
       } else {
         console.log('DB: Table Accessible');
       }
-    
-      db.run(insert, function(err) {
+
+      db.run(insert, (err) => {
         if (err) {
-          resolve(err);
+          reject(new Error(err))
         }
 
         console.log(`DB: Insert ${this.lastID}`);
         db.close((err) => {
           if (err) {
-            resolve(err);
+            reject(new Error(err))
             return;
             // reject('allfake')
           }
@@ -178,84 +250,77 @@ async function saveNodes(list){
           resolve('addnodes')
         });
       });
-    
     })
   })
 }
 
 async function dropNodes(list){
-  
+  return new Promise(function(resolve, reject) {
+    var db = new sqlite3.Database(paths.ipdb, (err) => {
+      if (err) {
+        return reject(new Error(err))
+      } else {
+        console.log('DB: Connected!');
+      }
+    });
+    var deleteNodes = 'DELETE FROM nodes WHERE'
+    if ( list.length == 1 ) {
+      deleteNodes += `
+      network = "${list[0][0]}"
+      AND number = ${list[0][1]}
+      AND address = "${list[0][2]}"
+      AND parentNetwork = "${list[0][3]}";`
+    } else {
+      reject(new Error('Nodes don\'t support multiple drop yet'))
+    }
+
+    console.log(deleteNodes);
+    db.run(deleteNodes, (err)=>{
+      if (err) {
+        reject(new Error(err))
+      } else {
+
+      }
+
+
+      db.close((err) => {
+        if (err) {
+          reject(new Error(err));
+          return;
+        }
+        console.log('DB: Closed');
+        resolve('dropNodes')
+      });
+    })
+  });
 }
 
 async function loadNodes(){
-  var result = await saveNodes(nodelist)
+  // var result = await saveNodes(nodelist)
   // console.log(result);
-  
+
   return new Promise( (resolve, reject) => {
       var db = new sqlite3.Database(paths.ipdb, (err) => {
         if (err) {
           reject(err.message);
         } else {
-          console.log('DB: Connected!'); 
+          console.log('DB: Connected!');
         }
       });
-      
+
       var selectall = 'SELECT * FROM nodes;'
-      
+
       db.all(selectall, [], (err, rows) => {
         if (err) {
           throw err;
         }
-        
-        resolve(rows)
+        db.close((e)=>{
+          if (e) reject(e)
+          else {
+            console.log('DB: Closed!');
+            resolve(rows)
+          }
+        })
       });
   })
 }
-
-let nodelist = [
-  ["Seele", "1", "117.50.97.136:18037"],
-  ["Seele", "2", "117.50.97.136:8038"],
-  ["Seele", "3", "104.218.164.77:8039"],
-  ["Seele", "4", "117.50.97.136:8036"],
-  ["Seele", "0", "117.50.97.136:8037"],
-  ["Seele", "0", "107.150.102.94:8038"],
-  ["Seele", "0", "104.218.164.77:8039"],
-  ["Seele", "0", "106.75.85.9:8037"],
-  ["Seele", "0", "117.50.11.129:8036"],
-  ["Seele", "0", "117.50.38.63:8036"],
-  ["Seele", "0", "107.150.96.231:8037"],
-  ["Seele", "0", "107.150.103.125:8039"],
-  ["Seele", "0", "104.218.164.169:8037"],
-  ["Seele", "0", "104.218.164.124:8039"],
-  ["Seele", "0", "104.218.164.193:8036"],
-  ["Seele", "0", "104.218.164.27:8037"],
-  ["Seele", "0", "106.75.90.237:18037"],
-  ["Seele", "0", "107.150.105.10:8037"],
-  ["SoloChain", "1", "107.150.105.10:8037"],
-  ["SoloChain", "0", "104.218.164.193:8036"],
-  ["SoloChain", "0", "104.218.164.27:8037"],
-  ["SoloChain", "0", "106.75.90.237:18037"],
-  ["SoloChain", "0", "107.150.105.10:8037"],
-  ["HipHopChain", "1", "107.150.105.10:8037"],
-  ["HipHopChain", "0", "104.218.164.193:8036"],
-  ["HipHopChain", "0", "104.218.164.27:8037"],
-  ["HipHopChain", "0", "106.75.90.237:18037"],
-  ["HipHopChain", "0", "107.150.105.10:8037"]
-]
-
-let keylist = [
-  path.join(__dirname , "test", "Matthew"),
-  path.join(__dirname , "test", "Mark"),
-  path.join(__dirname , "test", "Luke"),
-  path.join(__dirname , "test", "John")
-]
-
-// uncomment below and run node io_settings.js
-// loadSettings().then((settings)=>{
-//   var saving = JSON.parse(JSON.stringify(settings));
-//   saving.lang="CN"
-//   saving.theme="white"
-//   return saveSettings(saving)
-// }).catch((err)=>{
-//   console.log(err);
-// })

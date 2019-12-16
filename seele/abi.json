@@ -164,6 +164,34 @@
 	},
 	{
 		"constant": true,
+		"inputs": [],
+		"name": "getUsersLen",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "isFrozen",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
 		"inputs": [
 			{
 				"name": "_index",
@@ -374,6 +402,20 @@
 			{
 				"name": "",
 				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getOps",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address[]"
 			}
 		],
 		"payable": false,
@@ -1123,6 +1165,42 @@
 			}
 		],
 		"name": "RemoveBlockChallenge",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "num",
+				"type": "uint256"
+			}
+		],
+		"name": "printNum",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "by32",
+				"type": "bytes32"
+			}
+		],
+		"name": "printBytes32",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "ad",
+				"type": "address"
+			}
+		],
+		"name": "printAddress",
 		"type": "event"
 	}
 ]
